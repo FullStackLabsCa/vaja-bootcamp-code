@@ -8,7 +8,7 @@ public class HighSchool extends School {
 
     SchoolType schoolType = SchoolType.HIGH_SCHOOL;
     @Override
-    public double fees(Student student) {
+    public double calculateFees(Student student) {
        double fees=100*(2.00);
         if(student.getGrade()== Grade.GRADE9){
             return fees;
@@ -17,10 +17,13 @@ public class HighSchool extends School {
         }
         return fees;
     }
+    public double calculate(int side){
+        return side*side;
+    }
 
     @Override
     public Student admitStudent(Student student) {
-        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be «««««« $" + fees(student));
+        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be «««««« $" + calculateFees(student));
         return super.admitStudent(student);
     }
 }

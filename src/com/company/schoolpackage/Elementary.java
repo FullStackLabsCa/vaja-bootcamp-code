@@ -9,10 +9,10 @@ public class Elementary extends School {
     SchoolType schoolType = SchoolType.ELEMENTARY;
 
     @Override
-    public double fees(Student student) {
+    public double calculateFees(Student student) {
         double fees=100*(1.5);
         if(student.getGrade()== Grade.GRADE1){
-            return  fees;
+            return  Math.round(fees);
         }else if(student.getGrade()==Grade.GRADE2){
             double G2fees = fees + fees * 30/100;
             fees=G2fees;
@@ -26,12 +26,12 @@ public class Elementary extends School {
             double G5fees = fees + fees * 90/100;
             fees = G5fees +G5fees*30/100;
         }
-        return fees;
+        return Math.round(fees);
     }
 
     @Override
     public Student admitStudent(Student student) {
-        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be «««««« $" + fees(student));
+        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be «««««« $" + calculateFees(student));
         return super.admitStudent(student);
     }
 

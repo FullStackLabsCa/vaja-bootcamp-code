@@ -2,6 +2,7 @@ package com.company.main;
 
 import com.company.conditionsandenums.SchoolType;
 import com.company.conditionsandenums.UseColor;
+import com.company.exceptions.NameDeclarationWrong;
 import com.company.exceptions.NameEnteredNotValid;
 import com.company.schoolpackage.PrintStudentInformation;
 
@@ -11,12 +12,12 @@ import java.util.Scanner;
 public class MyLauncher {
     public static char i;
     public static final String ERROR = "PLEASE ENTER SINGLE CHARACTER FROM MENU";
-    public static final String DOTS = "PLEASE ENTER SINGLE CHARACTER FROM MENU";
+    public static final String DOTS = "***********************************************************************";
 
     public static void main(String[] args) {
         // write your code here
         System.out.println(UseColor.ANSI_RED + DOTS);
-        System.out.println(UseColor.ANSI_CYAN + "WELCOME TO THE SCHOOL ADMISSION APP !!!!!");
+        System.out.println(UseColor.ANSI_CYAN + "WELCOME TO THE SCHOOL ADMISSION APP !!!!!     PRESS X TO EXIT");
         System.out.println(UseColor.ANSI_RED + DOTS);
         // printing menu at starting
         printMenu();
@@ -25,7 +26,6 @@ public class MyLauncher {
         i = takeValue();
 
         System.out.println("******************************************************************************");
-        boolean anotherFlag = true;
         GettingInformation gettingInformation = new GettingInformation();
         PrintStudentInformation p =   new PrintStudentInformation(gettingInformation.highSchool,
                 gettingInformation.middleSchool, gettingInformation.preSchool, gettingInformation.elementary);
@@ -36,6 +36,9 @@ public class MyLauncher {
                         gettingInformation.getStudentInformation();
                     } catch (NameEnteredNotValid e) {
                         System.out.println(UseColor.ANSI_RED + "Name entered not valid");
+                    } catch (NameDeclarationWrong nameDeclarationWrong) {
+                        System.out.println(UseColor.ANSI_RED+"NameDeclarationWrong Exception thrown");
+                        System.out.println("ALIEN NAMES ARE NOT ALLOWED HERE");
                     }
                     continueLoop();
                     break;
@@ -60,6 +63,7 @@ public class MyLauncher {
                     continueLoop();
                     break;
                 case 'X':
+                    System.out.println(UseColor.ANSI_PURPLE+"EXITING PROGRAM --->>>.....");
                     System.exit(0);
                     break;
                 default:

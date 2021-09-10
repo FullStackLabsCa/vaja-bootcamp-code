@@ -9,20 +9,22 @@ public class PreSchool extends School {
 
     SchoolType schoolType = SchoolType.PRE_SCHOOL;
     @Override
-    public double fees(Student student) {
+    public double calculateFees(Student student) {
+
         double fees=100*(1.1);
         if(student.getGrade()== Grade.JK){
-            return fees;
+            return Math.round(fees);
         }else if(student.getGrade()==Grade.SK){
             double gskFees = fees + fees * 25/100;
             fees=gskFees;
         }
-        return fees;
+        System.out.println(Math.round(fees));
+        return Math.round(fees);
     }
 
     @Override
     public Student admitStudent(Student student) {
-        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be >>>>>>>.. $" + fees(student));
+        System.out.println(UseColor.ANSI_CYAN+"Feees for student going to be >>>>>>>.. $" + calculateFees(student));
         return super.admitStudent(student);
     }
 }

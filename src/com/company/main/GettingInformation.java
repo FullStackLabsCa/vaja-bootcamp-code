@@ -4,6 +4,7 @@ import com.company.conditionsandenums.SchoolType;
 import com.company.conditionsandenums.UseColor;
 import com.company.conditionsandenums.UtilityClass;
 import com.company.exceptions.AgeNotCorrectException;
+import com.company.exceptions.NameDeclarationWrong;
 import com.company.exceptions.NameEnteredNotValid;
 import com.company.schoolpackage.*;
 
@@ -29,7 +30,7 @@ public final class GettingInformation {
      //created separate method  which is getting input from USER
     // Validating Student name and age
 
-    public void getStudentInformation() throws NameEnteredNotValid {
+    public void getStudentInformation() throws NameEnteredNotValid, NameDeclarationWrong {
         Scanner scanner = new Scanner(System.in);
         System.out.println(UseColor.ANSI_YELLOW + "Enter Student name");
         boolean flag = true;
@@ -37,11 +38,16 @@ public final class GettingInformation {
             if (scanner.hasNextInt()) {
                 System.out.println(UseColor.ANSI_RED + "Enter only String");
                 scanner.next();
-            } else if(scanner.hasNext("[A-Za-z]*")){
+            }else {
                 name = scanner.next();
-                char[] c = name.toCharArray();
-                if (c.length >= 50 || c.length <= 3) {
-                    throw new NameEnteredNotValid();
+                if(name.toUpperCase().matches("[A-Z]+")){
+                    char[] c = name.toCharArray();
+                    if (c.length >= 50 || c.length <= 3) {
+                        throw new NameEnteredNotValid();
+                    }
+                }
+                else{
+                    throw new NameDeclarationWrong();
                 }
                 flag = false;
             }
@@ -60,7 +66,7 @@ public final class GettingInformation {
                 LocalDate birthday = LocalDate.of(year, month, days);
                 Period p = Period.between(birthday, today);
                 int age = p.getYears();
-                checkDate(dob);
+                //checkDate(dob);
                 System.out.println(UseColor.ANSI_CYAN + "You are " + age + " years old");
                 Grade g = null;
                 try {
@@ -156,8 +162,6 @@ public final class GettingInformation {
         }
         return student;
     }
-
-
     // Created method to check for Date if it is valid or not
 
     private boolean checkDate(String str) {
@@ -169,10 +173,9 @@ public final class GettingInformation {
             try {
                 Date javaD = sd.parse(str);
             } catch (ParseException e) {
+                System.out.println("wrong input");
                 return false;
             }
             return true;
-
     }
-
 }

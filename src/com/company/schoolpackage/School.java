@@ -1,5 +1,6 @@
 package com.company.schoolpackage;
 
+import com.company.conditionsandenums.SchoolType;
 import com.company.main.Student;
 import com.company.conditionsandenums.UseColor;
 
@@ -9,8 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class School implements SchoolMain {
+
     Map<Grade, List<Student>> gradeToStudentsMap = new HashMap<>();
     public int noOfStudent=0;
+
+    @Override
+    public int noOfStudents() {
+        return noOfStudent;
+    }
+
     @Override
     public Student admitStudent(Student student) {
         if (gradeToStudentsMap.get(student.getGrade()) == null) {

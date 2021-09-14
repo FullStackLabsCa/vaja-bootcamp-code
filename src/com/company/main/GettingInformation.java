@@ -20,10 +20,10 @@ public final class GettingInformation {
 
     private String name = null;
     private static int jK, sK, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10 = 0;
-    HighSchool highSchool = new HighSchool();
-    MiddleSchool middleSchool = new MiddleSchool();
-    PreSchool preSchool = new PreSchool();
-    Elementary elementary = new Elementary();
+    SchoolMain highSchool = new HighSchool();
+    SchoolMain middleSchool = new MiddleSchool();
+    SchoolMain preSchool = new PreSchool();
+    SchoolMain elementary = new Elementary();
 
     public GettingInformation() {
     }

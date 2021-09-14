@@ -6,6 +6,7 @@ import com.company.main.Student;
 
 public class MiddleSchool extends School {
 
+
     SchoolType schoolType = SchoolType.MIDDLE_SCHOOL;
     @Override
     public double calculateFees(Student student) {

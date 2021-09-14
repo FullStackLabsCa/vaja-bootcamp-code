@@ -6,9 +6,7 @@ import com.company.schoolpackage.Grade;
 public class UtilityClass {
 
     private UtilityClass(){
-
     }
-
     // Determining Grade based on age
 
     public static Grade determineGradeOnAge(int age) throws AgeNotCorrectException {

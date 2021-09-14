@@ -1,6 +1,4 @@
 
-Q
-!src/com/company/main/Student.java,d/3/d3221daa18e9c09e71f3b4f78d494855d11e430d
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302

@@ -4,6 +4,7 @@ import com.company.conditionsandenums.SchoolType;
 import com.company.conditionsandenums.UseColor;
 import com.company.conditionsandenums.UtilityClass;
 import com.company.exceptions.AgeNotCorrectException;
+import com.company.exceptions.GradeNotCorrectException;
 import com.company.exceptions.NameDeclarationWrong;
 import com.company.exceptions.NameEnteredNotValid;
 import com.company.schoolpackage.*;
@@ -30,7 +31,7 @@ public final class GettingInformation {
      //created separate method  which is getting input from USER
     // Validating Student name and age
 
-    public void getStudentInformation() throws NameEnteredNotValid, NameDeclarationWrong {
+    public void getStudentInformation() throws NameEnteredNotValid, NameDeclarationWrong, GradeNotCorrectException {
         Scanner scanner = new Scanner(System.in);
         System.out.println(UseColor.ANSI_YELLOW + "Enter Student name");
         boolean flag = true;
@@ -75,7 +76,7 @@ public final class GettingInformation {
                 } catch (AgeNotCorrectException e) {
                     if (age > 17) {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO OLD TO GET ADMISSION.WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
-                    } else if (age < 5) {
+                    } else if (age < 4) {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO YOUNG TO GET ADMISSION. WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
                     }
                 }
@@ -162,12 +163,10 @@ public final class GettingInformation {
         }
         return student;
     }
+
     // Created method to check for Date if it is valid or not
 
     private boolean checkDate(String str) {
-//        if (str.trim().equals("")) {
-//            return true;
-//        } else {
             SimpleDateFormat sd = new SimpleDateFormat("MM/dd/yyyy");
             sd.setLenient(false);
             try {
@@ -177,5 +176,6 @@ public final class GettingInformation {
                 return false;
             }
             return true;
+
     }
 }

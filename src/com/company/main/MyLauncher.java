@@ -2,6 +2,7 @@ package com.company.main;
 
 import com.company.conditionsandenums.SchoolType;
 import com.company.conditionsandenums.UseColor;
+import com.company.exceptions.GradeNotCorrectException;
 import com.company.exceptions.NameDeclarationWrong;
 import com.company.exceptions.NameEnteredNotValid;
 import com.company.schoolpackage.PrintStudentInformation;
@@ -39,6 +40,8 @@ public class MyLauncher {
                     } catch (NameDeclarationWrong nameDeclarationWrong) {
                         System.out.println(UseColor.ANSI_RED+"NameDeclarationWrong Exception thrown");
                         System.out.println("ALIEN NAMES ARE NOT ALLOWED HERE");
+                    } catch (GradeNotCorrectException e) {
+                        e.printStackTrace();
                     }
                     continueLoop();
                     break;

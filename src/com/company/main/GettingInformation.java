@@ -20,7 +20,7 @@ public final class GettingInformation {
 
 
     private String name = null;
-    private static int jK, sK, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10 = 0;
+    private static int jK, sK, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10,g11,g12 = 0;
     SchoolMain highSchool = new HighSchool();
     SchoolMain middleSchool = new MiddleSchool();
     SchoolMain preSchool = new PreSchool();
@@ -74,7 +74,7 @@ public final class GettingInformation {
                     g = UtilityClass.determineGradeOnAge(age);
                     System.out.println(g);
                 } catch (AgeNotCorrectException e) {
-                    if (age > 17) {
+                    if (age > 18) {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO OLD TO GET ADMISSION.WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
                     } else if (age < 4) {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO YOUNG TO GET ADMISSION. WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
@@ -110,7 +110,8 @@ public final class GettingInformation {
 
     private Student creatingIdAndAddingStudent(String name, int age, Grade g, SchoolType s) {
         String gJk = "GJK-", gSk = "GSK-", s1 = "G1-", s2 = "G2-", s3 = "G3-", s4 = "G4-",
-                s5 = "G5-", s6 = "G6-", s7 = "G7-", s8 = "G8-", s9 = "G9-", s10 = "G10-";
+                s5 = "G5-", s6 = "G6-", s7 = "G7-", s8 = "G8-", s9 = "G9-", s10 = "G10-" ,
+        s11 = "G11-",s12="G12-";
         Student student = null;
         if (g == Grade.JK) {
             int i9 = jK++;
@@ -160,6 +161,14 @@ public final class GettingInformation {
             int i9 = g10++;
             s10 = s10 + i9;
             student = new Student(s10, name, age, g, s);
+        }else if (g == Grade.GRADE11) {
+            int i9 = g11++;
+            s11 = s11 + i9;
+            student = new Student(s11, name, age, g, s);
+        }else if (g == Grade.GRADE12) {
+            int i9 = g12++;
+            s12 = s12 + i9;
+            student = new Student(s12, name, age, g, s);
         }
         return student;
     }

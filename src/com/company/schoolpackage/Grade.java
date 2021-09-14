@@ -13,7 +13,8 @@ public enum Grade {
     GRADE8,
     GRADE9,
     GRADE10,
-    ;
+    GRADE11,
+    GRADE12,
 
 
 }

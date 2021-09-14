@@ -37,6 +37,10 @@ public class UtilityClass {
                 return Grade.GRADE9;
             case 15:
                 return Grade.GRADE10;
+            case 16:
+                return Grade.GRADE11;
+            case 17:
+                return Grade.GRADE12;
             default:
                 throw new AgeNotCorrectException("Enter must be between 5 and 16");
         }
@@ -63,6 +67,8 @@ public class UtilityClass {
                 return SchoolType.MIDDLE_SCHOOL;
             case GRADE9:
             case GRADE10:
+            case GRADE11:
+            case GRADE12:
                 return SchoolType.HIGH_SCHOOL;
 
             default:

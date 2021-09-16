@@ -25,13 +25,12 @@ public final class GettingInformation {
     SchoolMain middleSchool = new MiddleSchool();
     SchoolMain preSchool = new PreSchool();
     SchoolMain elementary = new Elementary();
-
     public GettingInformation() {
     }
      //created separate method  which is getting input from USER
     // Validating Student name and age
 
-    public void getStudentInformation() throws NameEnteredNotValid, NameDeclarationWrong, GradeNotCorrectException {
+    public void getStudentInformation() throws NameEnteredNotValid, GradeNotCorrectException, AgeNotCorrectException, NameDeclarationWrong {
         Scanner scanner = new Scanner(System.in);
         System.out.println(UseColor.ANSI_YELLOW + "Enter Student name");
         boolean flag = true;
@@ -67,23 +66,26 @@ public final class GettingInformation {
                 LocalDate birthday = LocalDate.of(year, month, days);
                 Period p = Period.between(birthday, today);
                 int age = p.getYears();
-                //checkDate(dob);
                 System.out.println(UseColor.ANSI_CYAN + "You are " + age + " years old");
                 Grade g = null;
                 try {
                     g = UtilityClass.determineGradeOnAge(age);
                     System.out.println(g);
                 } catch (AgeNotCorrectException e) {
-                    if (age > 18) {
+                    if (age >= 18) {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO OLD TO GET ADMISSION.WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
-                    } else if (age < 4) {
+                        break;
+                    } else {
                         System.out.println(UseColor.ANSI_RED + "YOU ARE TOO YOUNG TO GET ADMISSION. WE TAKE STUDENTS WHO ARE BETWEEN 5 TO 16");
+                        break;
                     }
                 }
-                SchoolType school = UtilityClass.determineSchoolBasedOnGrade(g);
-                Student s = creatingIdAndAddingStudent(name, age, g, school);
-                addStudentFinally(school, s);
-                flag = false;
+                while (flag){
+                    SchoolType school = UtilityClass.determineSchoolBasedOnGrade(g);
+                    Student s = creatingIdAndAddingStudent(name, age, g, school);
+                    addStudentFinally(school, s);
+                    flag = false;
+                }
             } else {
 
                 System.out.println("\n" + UseColor.ANSI_RED + " YOUR DATE OF BIRTH FORMAT IS WRONG : PLEASE CORRECT IT AND RE-ENTER IN MM/DD/YYYY FORMAT"

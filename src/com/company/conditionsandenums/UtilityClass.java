@@ -48,7 +48,7 @@ public class UtilityClass {
 
     // Determining Grade Based on age
 
-    public static SchoolType determineSchoolBasedOnGrade(Grade grade) throws GradeNotCorrectException {
+    public static SchoolType determineSchoolBasedOnGrade(Grade grade) throws  GradeNotCorrectException {
 
 
         switch (grade) {

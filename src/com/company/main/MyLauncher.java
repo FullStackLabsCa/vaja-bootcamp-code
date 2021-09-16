@@ -2,6 +2,7 @@ package com.company.main;
 
 import com.company.conditionsandenums.SchoolType;
 import com.company.conditionsandenums.UseColor;
+import com.company.exceptions.AgeNotCorrectException;
 import com.company.exceptions.GradeNotCorrectException;
 import com.company.exceptions.NameDeclarationWrong;
 import com.company.exceptions.NameEnteredNotValid;
@@ -30,7 +31,8 @@ public class MyLauncher {
         GettingInformation gettingInformation = new GettingInformation();
         PrintStudentInformation p =   new PrintStudentInformation(gettingInformation.highSchool,
                 gettingInformation.middleSchool, gettingInformation.preSchool, gettingInformation.elementary);
-        while (true) {
+        boolean flag = true;
+        while (flag) {
             switch (i) {
                 case 'A':
                     try {
@@ -39,8 +41,10 @@ public class MyLauncher {
                         System.out.println(UseColor.ANSI_RED + "Name entered not valid");
                     } catch (NameDeclarationWrong nameDeclarationWrong) {
                         System.out.println(UseColor.ANSI_RED+"NameDeclarationWrong Exception thrown");
-                        System.out.println("ALIEN NAMES ARE NOT ALLOWED HERE");
+                        System.out.println("PLEASE CHECK YOUR NAME FOR NEXT TIME");
                     } catch (GradeNotCorrectException e) {
+                        e.printStackTrace();
+                    } catch (AgeNotCorrectException e) {
                         e.printStackTrace();
                     }
                     continueLoop();
